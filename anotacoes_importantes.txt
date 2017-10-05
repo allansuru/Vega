@@ -1,0 +1,30 @@
+Obs - Curso .netCORE - angular 2,4
+
+ctrl + shift + p => install extensions
+
+- Angular with TypeScript snippets
+- asp.net helper
+- auto import
+- beautify
+- c#
+- c# extensions
+- Docker
+- mssql
+- rest client
+
+
+Terminal
+
+npm install -g yo generator-aspnetcore-spa
+
+- Criando Projeto
+
+- dotnet new angular
+ou 
+npm install -g yo generator-aspnetcore-spa
+
+Adicionar variavel  de ambiente em painel de controle/Sistema/ConfiguracoesAvancadas
+
+> setx ASPNETCORE_ENVIRONMENT "Development"
+
+dotnet watch by google --> otimizar 
