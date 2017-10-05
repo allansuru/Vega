@@ -10,7 +10,7 @@ namespace Vega.Controllers
     {
         public IActionResult Index()
         {
-            string teste = "";
+       
             return View();
         }
 
