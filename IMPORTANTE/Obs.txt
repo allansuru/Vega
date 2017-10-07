@@ -9,7 +9,9 @@ Install-Package Microsoft.EntityFrameworkCore.Design -Version 1.1 -- Esse tbm
 
 - Criar as Models e o DBContext
 - Adicionando "Dependence Injection" par ao DbContext, registrar elas na classe Startup.cs e add a conn na appsettings.json, isso no CORE, porem no MVC add isso web.config
-- Daí rodar o Migration pra criar tudo direitinho
+- Daí rodar o Migration pra criar tudo direitinho, mas ainda sem os dbsets.
+- Depois como noa adicionamos os db-sets, vamos usar o Remove-Migration -Force, q deleta o ultimo registro gerado pelo Migration e rodar outro Add-Migration
+
 
 
 
@@ -29,3 +31,6 @@ Diferentemente de ter um web.config, temos um appsetings.json, lá devemos add a
 
  Outro ponto a levar em consideração, na hora de rodar o Add-Migration "Initial Model", rodar aos poucos, por exemplo, antes dos dobsets, poucas classes, menos 
  chance de dar erro
+
+
+ //"Data Source=DESKTOP-Q5M5PCV\SQLEXPRESS;Initial Catalog=vega;Integrated Security=True";

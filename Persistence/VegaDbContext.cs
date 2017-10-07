@@ -15,7 +15,8 @@ namespace Vega.Persistence
 
         }
 
-       // public DbSet<Make> Makes { get; set; }
-       // public DbSet<Model> Models { get; set; }
+        public DbSet<Make> Makes { get; set; }
+        // como na classe Make, eu tenho a Model, o entity framework ja se liga nisso e cria as tabelas relacionadas
+        //public DbSet<Model> Models { get; set; }
     }
 }
