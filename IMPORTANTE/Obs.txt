@@ -1,0 +1,31 @@
+﻿OBS - Preciso atualizar o core par ao 2
+
+1 ° Instalar o Entity Framework => Install-Package Microsoft.EntityFrameworkCore -Version 1.1.0
+Install-Package Microsoft.EntityFrameworkCore.SqlServer  -Version 1.1
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 1.1 ---> Esse é o do Migration
+Install-Package Microsoft.EntityFrameworkCore.Design -Version 1.1 -- Esse tbm
+
+* Passo a passo pra nao se perder
+
+- Criar as Models e o DBContext
+- Adicionando "Dependence Injection" par ao DbContext, registrar elas na classe Startup.cs e add a conn na appsettings.json, isso no CORE, porem no MVC add isso web.config
+- Daí rodar o Migration pra criar tudo direitinho
+
+
+
+
+
+
+
+* Lembretes
+
+Add-Migration "Nome"
+UpdateDatabase
+
+Diferentemente de ter um web.config, temos um appsetings.json, lá devemos add a conexao de string por exemplo Configuration["ConnectionStrings:Default"]
+ 
+ Win Autentication - "server=localhost; database=vega; Integrated Security=SSPI;"
+ SQL Autentication - "server=localhost; database=vega; user id=sa; password=passw;"
+
+ Outro ponto a levar em consideração, na hora de rodar o Add-Migration "Initial Model", rodar aos poucos, por exemplo, antes dos dobsets, poucas classes, menos 
+ chance de dar erro
