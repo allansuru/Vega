@@ -1,9 +1,11 @@
-﻿OBS - Preciso atualizar o core par ao 2
+﻿Pacotes que preciso instalar via NUGET, seguindo a cronologia do projeto!
 
 1 ° Instalar o Entity Framework => Install-Package Microsoft.EntityFrameworkCore -Version 1.1.0
 Install-Package Microsoft.EntityFrameworkCore.SqlServer  -Version 1.1
 Install-Package Microsoft.EntityFrameworkCore.Tools -Version 1.1 ---> Esse é o do Migration
 Install-Package Microsoft.EntityFrameworkCore.Design -Version 1.1 -- Esse tbm
+Install-Package AutoMapper
+Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 1.2.0
 
 * Passo a passo pra nao se perder
 
@@ -13,7 +15,9 @@ Install-Package Microsoft.EntityFrameworkCore.Design -Version 1.1 -- Esse tbm
 - Depois como noa adicionamos os db-sets, vamos usar o Remove-Migration -Force, q deleta o ultimo registro gerado pelo Migration e rodar outro Add-Migration
 - Depois de  adicionar uns data annotations e seeds no banco, comecei a controller, tive problemas ao gerar pelo VS, gera varios erros estranhos.
 - Daí tive que da um ctrl c + ctrl v num controller pra comecar a montar meu controller webapi
-
+- Após o webapi na controller, criei um Resource, q é como se fosse o meu DTO
+- Após os Resources(dtos), vamos add o automapper no projeto(nuget) e configurar ele na classe Startup.css em COnfigureService
+- Adicionar o AutoMapper nos controles, e criar uma pasta Mapping pra cuidar dos maps profiles
 
 
 
