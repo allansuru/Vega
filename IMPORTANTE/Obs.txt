@@ -19,6 +19,8 @@ Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 1.2
 - Após os Resources(dtos), vamos add o automapper no projeto(nuget) e configurar ele na classe Startup.css em COnfigureService
 - Adicionar o AutoMapper nos controles, e criar uma pasta Mapping pra cuidar dos maps profiles
 - Agora começa o client, sao varios arquivos, pra mexer. Fiz um checkin aqui pra saber quais, nome do check-in -> Start ANGULAR
+- Após adicionar os modules pra funfar o angular, a gente constroi serviços que vao ser consumidos pelo component, estes serviços(web api) consomem as infos do banco
+- criou o serviço com o http, etc, injeta no construtor pra usar e depois add no appmodule o serviço dentro do provider
 
 
 
@@ -36,6 +38,11 @@ Diferentemente de ter um web.config, temos um appsetings.json, lá devemos add a
 
  Outro ponto a levar em consideração, na hora de rodar o Add-Migration "Initial Model", rodar aos poucos, por exemplo, antes dos dobsets, poucas classes, menos 
  chance de dar erro
+
+
+
+ *Zencoding
+   div.form-group>label[for='model']+select[id='model'].form-control
 
 
  //"Data Source=DESKTOP-Q5M5PCV\SQLEXPRESS;Initial Catalog=vega;Integrated Security=True";

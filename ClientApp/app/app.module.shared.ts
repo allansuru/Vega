@@ -1,3 +1,5 @@
+import { MakeService } from './services/make.service';
+
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -9,7 +11,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 
 export const sharedConfig: NgModule = {
-    bootstrap: [ AppComponent ],
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         NavMenuComponent,
@@ -27,5 +29,9 @@ export const sharedConfig: NgModule = {
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    providers:
+    [
+        MakeService
     ]
 };
