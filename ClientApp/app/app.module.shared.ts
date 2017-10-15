@@ -29,9 +29,5 @@ export const sharedConfig: NgModule = {
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ],
-    providers:
-    [
-        MakeService
     ]
 };
