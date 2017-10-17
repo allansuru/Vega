@@ -21,10 +21,10 @@ Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 1.2
 - Agora começa o client, sao varios arquivos, pra mexer. Fiz um checkin aqui pra saber quais, nome do check-in -> Start ANGULAR
 - Após adicionar os modules pra funfar o angular, a gente constroi serviços que vao ser consumidos pelo component, estes serviços(web api) consomem as infos do banco
 - criou o serviço com o http, etc, injeta no construtor pra usar e depois add no appmodule o serviço dentro do provider
-- IMPORTANTISSIMO, nesse meu exemplo o meu app.module é o app.module.server e as rotas tao no app.module.shared
+- IMPORTANTISSIMO, nesse meu exemplo o meu app.module é o app.module.client e as rotas tao no app.module.shared
 - No html, quando for usar o ngModel, adicionar a propriedade name, senao, nao funfa, vem um objeto vazio
 <select id="make" class="form-control" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
-- 
+- Criando o service do Features, sempre q criar uma services.ts, add no appmodule(app.module.client) esse cara pra poder usar.
 
 
 
