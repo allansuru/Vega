@@ -10,8 +10,5 @@ export class FeatureService
     constructor(private http: Http) { }
 
 
-    getFeatures() {
-        return this.http.get('/api/features')
-            .map(res => res.json());
-    }
+   
 }

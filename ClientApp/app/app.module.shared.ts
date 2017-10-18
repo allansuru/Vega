@@ -1,4 +1,4 @@
-import { MakeService } from './services/make.service';
+import { VehicleService } from './services/vehicle.service';
 
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
