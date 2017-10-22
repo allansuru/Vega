@@ -32,5 +32,6 @@ namespace vega.Controllers
 
             return Ok(result);
         }
+
     }
 }

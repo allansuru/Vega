@@ -9,6 +9,7 @@ namespace Vega.Persistence
 {
     public class VegaDbContext : DbContext
     {
+        
         public DbSet<Make> Makes { get; set; }
         public DbSet<Feature> Features { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
@@ -18,8 +19,10 @@ namespace Vega.Persistence
             :base(options)
         {
         }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //chave primária composta no modelo(classe) VehicleFeature. Fluent API
             modelBuilder.Entity<VehicleFeature>().HasKey(vf =>
               new { vf.VehicleId, vf.FeatureId });
         }

@@ -26,6 +26,29 @@ Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 1.2
 <select id="make" class="form-control" (change)="onMakeChange()" [(ngModel)]="vehicle.make" name="make">
 - Criando o service do Features, sempre q criar uma services.ts, add no appmodule(app.module.client) esse cara pra poder usar.
 - Mais um exemplo PICA do zenconding (div.form-group>label+input[type='text'].form-control)*3
+- OBS: Na versão 1 do entityframework do netCore, não tinha ainda o n to n, tive adicionar essa tratativa no MappingProfile. NO EF 6 funfa automatico.
+- Sempre começando por propriedades, depois vem os constructors e finalmente os methods.
+- No caso de ser uma rota unica como essa '/api/vehicles' facilita criar uma rota no topo da classe, como: [Route("/api/vehicles")]
+-  Repare que no post do api/vehicle, tem mais um item a se guardar. [FromBody], repare q nos testes usando o Postaman, é no body q eu passo o meu json.
+- Ex. Jason do http://localhost:52785/api/vehicles/
+-  {
+    "modelId": 4,
+    "isRegistered": true,
+    "contact": {
+        "name": "Allan Passos",
+        "email": "email",
+        "phone": "phone"
+    },
+    "features": [1,2,3]
+}
+- Como repararam meu json, é montando no Resource, nesse caso, VehicleResource, que evidentemente tem q ta mapeado no mapping e no api/vehicles, pq esse cara tem ligacao
+com contato, e é uma boa prática criar um resource!!
+- PRA ESTUDOS:. Criei uma coluna ativo pro makes e entendi bastante a questao do model, resource e json, entendi tbm q da pra manipular de ambos os
+lados(server, client), mas qnd vem do server eu manipo e ja reflete direto no client, eu tbm consigo manipular no client, porem, tem q fazer um post desse objeo.
+
+
+
+
 
 
 

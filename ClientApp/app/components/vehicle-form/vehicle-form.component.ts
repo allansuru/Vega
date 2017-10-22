@@ -24,6 +24,8 @@ export class VehicleFormComponent implements OnInit {
         
         this.vehicleService.getMakes().subscribe(makes => {
             this.makes = makes;
+
+     
         });
 
         this.vehicleService.getFeatures().subscribe(features => {
@@ -38,6 +40,13 @@ export class VehicleFormComponent implements OnInit {
         // console.log(this.vehicle);
         var selectedMake = this.makes.find(m => m.id == this.vehicle.make);
         this.models = selectedMake ? selectedMake.models : [];
+
+        //if (selectedMake.id == 5)
+        //{
+        //    selectedMake.ativo = true;
+        //}
+
+       
 
 
 

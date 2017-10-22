@@ -23,10 +23,25 @@ namespace Vega.Controllers
         [HttpGet("api/makes")]
          public async Task<IEnumerable<MakeResource>> GetMakes()
         {
-           var makes = await context.Makes.Include(m => m.Models)
+            try
+            { 
+            var makes = await context.Makes.Include(m => m.Models)
                 .ToListAsync();
 
+            //foreach (var item in makes)
+            //{
+            //    if(item.Id == 4)
+            //    {
+            //        item.ativo = true;
+            //    }
+            //}
+
             return mapper.Map<List<Make>, List<MakeResource>>(makes);
+            }
+            catch(Exception ex)
+            {
+                throw ex.InnerException;
+            }
         }
     }
 }

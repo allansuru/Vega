@@ -12,6 +12,8 @@ namespace Vega.Controllers.Resources
 
         public string Name { get; set; }
 
+        public bool? ativo { get; set; }
+
         public ICollection<ModelResource> Models { get; set; }
 
         public MakeResource()
