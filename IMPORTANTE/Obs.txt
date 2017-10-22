@@ -32,19 +32,20 @@ Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 1.2
 -  Repare que no post do api/vehicle, tem mais um item a se guardar. [FromBody], repare q nos testes usando o Postaman, é no body q eu passo o meu json.
 - Ex. Jason do http://localhost:52785/api/vehicles/
 -  {
-    "modelId": 4,
-    "isRegistered": true,
-    "contact": {
-        "name": "Allan Passos",
-        "email": "email",
-        "phone": "phone"
+    modelId: 4,
+    isRegistered: true,
+    contact: {
+        name: "Allan SuRu2",
+        email: "allansuru@hotmail.com",
+        phone: "221213"
     },
-    "features": [1,2,3]
+    features: [1,2,3]
 }
 - Como repararam meu json, é montando no Resource, nesse caso, VehicleResource, que evidentemente tem q ta mapeado no mapping e no api/vehicles, pq esse cara tem ligacao
 com contato, e é uma boa prática criar um resource!!
 - PRA ESTUDOS:. Criei uma coluna ativo pro makes e entendi bastante a questao do model, resource e json, entendi tbm q da pra manipular de ambos os
 lados(server, client), mas qnd vem do server eu manipo e ja reflete direto no client, eu tbm consigo manipular no client, porem, tem q fazer um post desse objeo.
+- Sempre prefira Fluent API, mais completo que data annotation, data annotation, bom pra validar inputs.
 
 
 
