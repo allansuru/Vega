@@ -46,9 +46,54 @@ com contato, e é uma boa prática criar um resource!!
 - PRA ESTUDOS:. Criei uma coluna ativo pro makes e entendi bastante a questao do model, resource e json, entendi tbm q da pra manipular de ambos os
 lados(server, client), mas qnd vem do server eu manipo e ja reflete direto no client, eu tbm consigo manipular no client, porem, tem q fazer um post desse objeo.
 - Sempre prefira Fluent API, mais completo que data annotation, data annotation, bom pra validar inputs.
+- Depois q arrumei o post e put, e testando no POSTMAN, temos o seguinte retorno do json do vehicle
+{
+    "id": 13,
+    "model": {
+        "id": 4,
+        "name": "Make2-ModelA"
+    },
+    "make": {
+        "id": 5,
+        "name": "Make2"
+    },
+    "isRegistered": true,
+    "contact": {
+        "name": "NIKOLAS TESLA PUT",
+        "email": "teste@hotmail.com",
+        "phone": "121"
+    },
+    "lastUpdate": "2017-10-26T20:11:09.1951992-02:00",
+    "features": [
+        {
+            "id": 1,
+            "name": "Feature1"
+        }
+    ]
+
+- Repare que ate esse ponto no git, temos no VehicleController, mt código repetido, apesar de já ter feito alguns refactores nas classes. mas nos métodos,
+tem mt repeticao como isso aqui:
+
+context.Vehicles
+                 .Include(v => v.Features)
+                   .ThenInclude(vf => vf.Feature)
+                 .Include(v => v.Model)
+                   .ThenInclude(m => m.Make)
+                 .SingleOrDefaultAsync(v => v.Id == id);
+
+Percebido isso, vamos adicionar na pasta de persistencia um Vehicle Repositorio com esse codigo acima e sua Interface. VehicleRepository : IVehicleRepository
+- Criada a interface, vamos configurar a injecdao de  dependencia no Startup.cs
+- Repare que no VehicleController tem esses tres caras no construtor, ou seja, temos que injet-alos pra usá-los na classe e configurar no startup.
+construtor:    this.context = context;
+            this.mapper = mapper;
+            this.repository = repository;
 
 
+Configurar no startup:  services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddAutoMapper();
+            services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
+injetado Irepository, automapper e context(DB)
 
 
 

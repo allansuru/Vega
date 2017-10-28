@@ -20,7 +20,7 @@ namespace Vega.Controllers
             this.context = context;
             this.mapper = mapper;
         }
-        [HttpGet("api/makes")]
+        [HttpGet("api/makes")] //MARCA DO CARRO 
          public async Task<IEnumerable<MakeResource>> GetMakes()    
         {
             try
