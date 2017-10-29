@@ -94,7 +94,9 @@ Configurar no startup:  services.AddScoped<IVehicleRepository, VehicleRepository
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
 
 injetado Irepository, automapper e context(DB)
-
+- pra cada interface que vamos usar injetando, adicionamos aqui(Startup.cs) a referencia do msm.
+- Reparem que chegou um ponto ao avançar o código, que só temos Interfaces sendo usadas na controller, isso se chama, baixo acoplamento - SOLID!!
+ fica mais facil aplicar unit test, se tiver que mudar alguma coisa no context, nao preciso mudar em um monte de lugar. Encapsulamos o repositoio
 
 
 
