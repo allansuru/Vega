@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 using Vega.Controllers.Resources;
-using Vega.Models;
-using Vega.Persistence;
+using Vega.Core.Models;
+using Vega.Core;
 
 namespace vega.Controllers
 {
