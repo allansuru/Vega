@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { sharedConfig } from './app.module.shared';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -9,11 +11,12 @@ import { sharedConfig } from './app.module.shared';
     imports: [
 
         ServerModule,
+        FormsModule,
         ...sharedConfig.imports
     ],
     providers: [
        
-      //  VehicleService,
+      // VehicleService,
      //   FeatureService
     ]
 })

@@ -12,7 +12,7 @@
     <form  method="post">
         <div class="form-group">
             <label for="make">Make</label>
-            <select id="make" class="form-control" (change)="onMakeChange()"  [(ngModel)]="vehicle.makeId"   name="makeId"> <!-- [(ngModel)]="vehicle.makeId" -->
+            <select id="make" class="form-control" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId" name="makeId"> <!-- [(ngModel)]="vehicle.makeId" -->
                 <option value=""></option>
                 <option *ngFor="let m of makes" value="{{m.id}}">{{m.name}}</option>
             </select>
@@ -27,15 +27,15 @@
         </div>
         <p>Is this vehicles registered?</p>
         <label for="registered" class="radio-inline">
-            <input type="radio" name="isRegistered" id="registered" value="true" [(ngModel)]="vehicle.isRegistered" />Yes
+            <input type="radio" name="isRegistered" [(ngModel)]="vehicle.isRegistered" id="registered" value="true"  />Yes <!--[(ngModel)]="vehicle.isRegistered"-->
         </label>
         <label for="notRegistered"  class="radio-inline">
-            <input type="radio" name="isRegistered" id="notRegistered"  [(ngModel)]="vehicle.isRegistered" value="false" />No
+            <input type="radio" name="isRegistered" id="notRegistered" [(ngModel)]="vehicle.isRegistered"  value="false" />No <!-- [(ngModel)]="vehicle.isRegistered" -->
         </label>
         <h2>Features</h2>
         <div *ngFor="let f of features" class="checkbox">
             <label for="{{f.id}}" >
-            <input type="checkbox" id="features{{f.id}}" />{{f.name}}
+            <input type="checkbox" id="features{{f.id}}" (change)="onFeaturesToggle(f.id,$event)" />{{f.name}}
             </label>
         </div>
         <h2>Contact</h2>

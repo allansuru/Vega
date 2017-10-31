@@ -12,8 +12,12 @@ import { VehicleService } from './../../services/vehicle.service';
 export class VehicleFormComponent implements OnInit {
     makes: any[]; // add find, entre outros no objeto makes
     models: any[];
-    vehicle: any = {}; //objeto em branco
+    vehicle: any = {
+        features: []
+    }; 
     features: any[];
+
+    vehicles: any[];
 
     constructor(
         private vehicleService: VehicleService,
@@ -46,10 +50,16 @@ export class VehicleFormComponent implements OnInit {
         //    selectedMake.ativo = true;
         //}
 
-       
-
-
-
+    }
+    onFeaturesToggle(featureId, $event)
+    {
+        if ($event.target.checked)
+            this.vehicle.features.push(featureId);
+        else
+        {
+            var index = this.vehicle.features.indexOf(featureId);
+            this.vehicle.features.splice(index, 1);
+        }
     }
 
 }
