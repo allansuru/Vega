@@ -14,9 +14,14 @@ export class VehicleFormComponent implements OnInit {
     models: any[];
     vehicle: any = {
         features: [],
-        contact: []
+        contact: {
+            name: '',
+            email: '',
+            phone: '',
+        }
     }; 
     features: any[];
+  
 
     vehicles: any[];
 
@@ -36,8 +41,8 @@ export class VehicleFormComponent implements OnInit {
         this.vehicleService.getFeatures().subscribe(features => {
             this.features = features;
             //console.log(features);
-        });  
-
+        });
+        
       
 
     }
@@ -61,6 +66,15 @@ export class VehicleFormComponent implements OnInit {
             var index = this.vehicle.features.indexOf(featureId);
             this.vehicle.features.splice(index, 1);
         }
+    }
+    submit()
+    {
+
+       
+
+        this.vehicleService.create(this.vehicle)
+            .subscribe(x => console.log(x));
+
     }
 
 }
