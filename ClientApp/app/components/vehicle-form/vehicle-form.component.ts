@@ -13,7 +13,8 @@ export class VehicleFormComponent implements OnInit {
     makes: any[]; // add find, entre outros no objeto makes
     models: any[];
     vehicle: any = {
-        features: []
+        features: [],
+        contact: []
     }; 
     features: any[];
 
