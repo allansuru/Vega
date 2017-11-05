@@ -28,6 +28,8 @@ module.exports = (env) => {
                 'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
                 'es6-shim',
+                'ng2-toasty',
+                'ng2-toasty/bundles/style-bootstrap.css',
                 'es6-promise',
                 'event-source-polyfill',
                 'jquery',

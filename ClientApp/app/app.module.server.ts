@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { sharedConfig } from './app.module.shared';
 import { FormsModule } from '@angular/forms';
+import { ToastyModule } from 'ng2-toasty';
+import { AppErrorHandler } from './app.error-handler';
+import { VehicleService } from './services/vehicle.service';
+
 
 
 
@@ -12,11 +16,12 @@ import { FormsModule } from '@angular/forms';
 
         ServerModule,
         FormsModule,
+             ToastyModule.forRoot(),
         ...sharedConfig.imports
     ],
     providers: [
-       
-      // VehicleService,
+        { provide: ErrorHandler, useClass: AppErrorHandler }, 
+      VehicleService,
      //   FeatureService
     ]
 })

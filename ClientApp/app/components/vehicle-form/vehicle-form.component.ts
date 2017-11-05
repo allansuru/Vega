@@ -1,6 +1,7 @@
 ﻿import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from './../../services/vehicle.service';
+import { ToastyService } from "ng2-toasty";
 
 
 
@@ -15,9 +16,7 @@ export class VehicleFormComponent implements OnInit {
     vehicle: any = {
         features: [],
         contact: {
-            name: '',
-            email: '',
-            phone: '',
+          
         }
     }; 
     features: any[];
@@ -27,6 +26,7 @@ export class VehicleFormComponent implements OnInit {
 
     constructor(
         private vehicleService: VehicleService,
+        private toastyService: ToastyService
         
     ) { }
 
@@ -50,6 +50,7 @@ export class VehicleFormComponent implements OnInit {
         // console.log(this.vehicle);
         var selectedMake = this.makes.find(m => m.id == this.vehicle.makeId);
         this.models = selectedMake ? selectedMake.models : [];
+        delete this.vehicle.modelId;
 
         //if (selectedMake.id == 5)
         //{
@@ -70,10 +71,25 @@ export class VehicleFormComponent implements OnInit {
     submit()
     {
 
-       
-
         this.vehicleService.create(this.vehicle)
-            .subscribe(x => console.log(x));
+            .subscribe(x => this.toastyService.success({
+
+                title: 'Sucesso',
+                msg: 'Veículo Salvo com sucesso!',
+                theme: 'bootstrap',
+                showClose: true,
+                timeout: 5000
+            }),
+            err => {
+                this.toastyService.error({
+                    title: 'Error 2 ',
+                    msg: 'An unexpected error happened. ',
+                    theme: 'bootstrap',
+                    showClose: true,
+                    timeout : 5000
+
+                })
+            });
 
     }
 
