@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from './../../services/vehicle.service';
 import { ToastyService } from "ng2-toasty";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/Observable/forkJoin';
 
 
 
@@ -13,38 +15,51 @@ import { ToastyService } from "ng2-toasty";
 export class VehicleFormComponent implements OnInit {
     makes: any[]; // add find, entre outros no objeto makes
     models: any[];
+    features: any[];
     vehicle: any = {
         features: [],
         contact: {
           
         }
     }; 
-    features: any[];
-  
-
-    vehicles: any[];
 
     constructor(
+        private route: ActivatedRoute,
+        private router : Router,
         private vehicleService: VehicleService,
         private toastyService: ToastyService
+
+
         
-    ) { }
+    ) { 
+        route.params.subscribe(p => {
+            this.vehicle.id = +p['id'] || 0;
+        });
+    }
 
     ngOnInit() {
-        
-        this.vehicleService.getMakes().subscribe(makes => {
-            this.makes = makes;
 
-     
-        });
+        var sources = [
+            this.vehicleService.getMakes(),
+            this.vehicleService.getFeatures(),
+        ];
 
-        this.vehicleService.getFeatures().subscribe(features => {
-            this.features = features;
-            //console.log(features);
-        });
-        
-      
+        if (this.vehicle.id)
+            sources.push(this.vehicleService.getVehicle(this.vehicle.id));
 
+        Observable.forkJoin(sources).subscribe(data => {
+            this.makes = data[0];
+            this.features = data[1];
+
+            if(this.vehicle.id)
+                 this.vehicle = data[2];
+            }, err => {
+                     if (err.status == 404)
+                        this.router.navigate(['/home']);
+                     console.log('Erro 40 4');
+
+            });
+   
     }
     onMakeChange() {
         // console.log(this.vehicle);
@@ -79,17 +94,7 @@ export class VehicleFormComponent implements OnInit {
                 theme: 'bootstrap',
                 showClose: true,
                 timeout: 5000
-            }),
-            err => {
-                this.toastyService.error({
-                    title: 'Error 2 ',
-                    msg: 'An unexpected error happened. ',
-                    theme: 'bootstrap',
-                    showClose: true,
-                    timeout : 5000
-
-                })
-            });
+            }));
 
     }
 

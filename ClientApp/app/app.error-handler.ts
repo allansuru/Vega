@@ -1,6 +1,6 @@
 ﻿import * as Raven from 'raven-js'; 
 import { ToastyService } from 'ng2-toasty';
-import { ErrorHandler, Inject, NgZone } from '@angular/core';
+import { ErrorHandler, Inject, NgZone, isDevMode } from '@angular/core';
 
 export class AppErrorHandler implements ErrorHandler {
     constructor(private ngZone: NgZone,
@@ -8,15 +8,18 @@ export class AppErrorHandler implements ErrorHandler {
     }
 
     handleError(error: any): void {
-        Raven.captureException(error.originalError || error);
 
-        this.ngZone.run(() => {
+        if(!isDevMode)
+            Raven.captureException(error.originalError || error); //falta criar a conta no sentry.io, pra capturar os erros!!
+       
+
+        this.ngZone.run(() => { //esse cara arruma o async
             this.toastyService.error({
-                title: 'Error 1',
-                msg: 'An unexpected error happened.',
+                title: 'Erro',
+                msg: error,
                 theme: 'bootstrap',
                 showClose: true,
-                timeout: 5000
+                timeout: 10000
             });
             console.log('passou');
         });

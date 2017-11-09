@@ -8,6 +8,7 @@ Install-Package AutoMapper
 Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 1.2.0
 npm install ng2-toasty@2.5.0 --save
 npm install webpack -g
+npm install raven-js --save
 
 * Passo a passo pra nao se perder
 
@@ -103,7 +104,8 @@ injetado Irepository, automapper e context(DB)
 - Instalando o toast no meu projeto npm install ng2-toasty --save
 - Instalando webpack npm install webpack -g
 - Após instalar o toast, é importante adicionar seu estilos, em webpack.config.vendor.js!!
-  rode o seguinte comando:  webpack --config webpack.config.vendor.js
+  rode o seguinte comando:  webpack --config webpack.config.vendor.js e pra efetivar mais uma vez webpack
+- Mosh fala do sentry.io, esse cara é um logging service
 
 
 * Lembretes
