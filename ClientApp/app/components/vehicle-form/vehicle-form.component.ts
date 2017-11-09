@@ -47,6 +47,7 @@ export class VehicleFormComponent implements OnInit {
         if (this.vehicle.id)
             sources.push(this.vehicleService.getVehicle(this.vehicle.id));
 
+        //preencho aqui meus objetos oriundo do array sources, joguei dentro desse array!! boas praticas, poderia dentro do forkJoin([..,..,..])
         Observable.forkJoin(sources).subscribe(data => {
             this.makes = data[0];
             this.features = data[1];
@@ -55,8 +56,8 @@ export class VehicleFormComponent implements OnInit {
                  this.vehicle = data[2];
             }, err => {
                      if (err.status == 404)
-                        this.router.navigate(['/home']);
-                     console.log('Erro 40 4');
+                            this.router.navigate(['/home']);
+                    
 
             });
    
