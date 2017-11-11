@@ -64,7 +64,11 @@ export class VehicleFormComponent implements OnInit {
             this.features = data[1];
 
             if (this.vehicle.id)
+            {
                 this.setVehicle(data[2]);
+                this.populateModels();
+            }
+                
             }, err => {
                      if (err.status == 404)
                             this.router.navigate(['/home']);
@@ -84,17 +88,19 @@ export class VehicleFormComponent implements OnInit {
         
     }
     onMakeChange() {
-        // console.log(this.vehicle);
+        this.populateModels();
+
+        delete this.vehicle.modelId;
+    }
+
+
+
+    private populateModels()
+    {
         var selectedMake = this.makes.find(m => m.id == this.vehicle.makeId);
         this.models = selectedMake ? selectedMake.models : [];
-        delete this.vehicle.modelId;
-
-        //if (selectedMake.id == 5)
-        //{
-        //    selectedMake.ativo = true;
-        //}
-
     }
+
     onFeaturesToggle(featureId, $event)
     {
         if ($event.target.checked)
@@ -107,16 +113,30 @@ export class VehicleFormComponent implements OnInit {
     }
     submit()
     {
+        //update
+        if (this.vehicle.id) {
+            this.vehicleService.update(this.vehicle)
+                .subscribe(x => this.toastyService.success({
+                    title: 'Sucesso',
+                    msg: 'Veículo Updated!',
+                    theme: 'bootstrap',
+                    showClose: true,
+                    timeout: 5000
+                }));
+        }
+        else {
 
-        this.vehicleService.create(this.vehicle)
-            .subscribe(x => this.toastyService.success({
 
-                title: 'Sucesso',
-                msg: 'Veículo Salvo com sucesso!',
-                theme: 'bootstrap',
-                showClose: true,
-                timeout: 5000
-            }));
+            this.vehicleService.create(this.vehicle)
+                .subscribe(x => this.toastyService.success({
+
+                    title: 'Sucesso',
+                    msg: 'Veículo Salvo com sucesso!',
+                    theme: 'bootstrap',
+                    showClose: true,
+                    timeout: 5000
+                }));
+        }
 
     }
 
