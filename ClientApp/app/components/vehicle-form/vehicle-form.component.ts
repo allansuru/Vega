@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { VehicleService } from './../../services/vehicle.service';
 import { ToastyService } from "ng2-toasty";
 import { Observable } from "rxjs/Observable";
+import * as _ from 'underscore';
 import 'rxjs/add/Observable/forkJoin';
+
+import { SaveVehicle, Vehicle } from './../../models/vehicle';
 
 
 
@@ -13,12 +16,20 @@ import 'rxjs/add/Observable/forkJoin';
     styleUrls: ['./vehicle-form.component.css']
 })
 export class VehicleFormComponent implements OnInit {
-    makes: any[]; // add find, entre outros no objeto makes
+    // aqui monto meus arrays q eu vou trabalhar assim q carregados no ngInit()
+    makes: any[]; 
     models: any[];
     features: any[];
-    vehicle: any = {
+    vehicle: SaveVehicle = {
+        id: 0,
+        makeId: 0,
+        modelId: 0,
+        isRegistered: false,
         features: [],
         contact: {
+            name: '',
+            phone: '',
+            email: ''
           
         }
     }; 
@@ -52,8 +63,8 @@ export class VehicleFormComponent implements OnInit {
             this.makes = data[0];
             this.features = data[1];
 
-            if(this.vehicle.id)
-                 this.vehicle = data[2];
+            if (this.vehicle.id)
+                this.setVehicle(data[2]);
             }, err => {
                      if (err.status == 404)
                             this.router.navigate(['/home']);
@@ -61,6 +72,16 @@ export class VehicleFormComponent implements OnInit {
 
             });
    
+    }
+    private setVehicle(v: Vehicle)
+    {
+        this.vehicle.id = v.id;
+        this.vehicle.makeId = v.make.id;
+        this.vehicle.modelId = v.model.id;
+        this.vehicle.isRegistered = v.isRegistered;
+        this.vehicle.features = _.pluck(v.features, 'id');
+        this.vehicle.contact = v.contact;
+        
     }
     onMakeChange() {
         // console.log(this.vehicle);

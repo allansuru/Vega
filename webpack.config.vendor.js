@@ -34,6 +34,7 @@ module.exports = (env) => {
                 'event-source-polyfill',
                 'jquery',
                 'raven-js',
+                'underscore',
                 'zone.js',
             ]
         },

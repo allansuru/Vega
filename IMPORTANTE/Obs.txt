@@ -9,6 +9,8 @@ Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 1.2
 npm install ng2-toasty@2.5.0 --save
 npm install webpack -g
 npm install raven-js --save
+npm install underscore e npm install @types/underscore
+
 
 * Passo a passo pra nao se perder
 
@@ -106,6 +108,10 @@ injetado Irepository, automapper e context(DB)
 - Após instalar o toast, é importante adicionar seu estilos, em webpack.config.vendor.js!!
   rode o seguinte comando:  webpack --config webpack.config.vendor.js e pra efetivar mais uma vez webpack
 - Mosh fala do sentry.io, esse cara é um logging service
+- Chegou num ponto que é interessante já criar o model no meu client pra trabalhar mais facilmente como objeto, entao foi criado as interface, tudo no msm arquivo,
+depois da pra seraparar pra ficar mais bonito e criamos um metodo de setVehicle.
+- agora entra mais modulo pra ser instalado - npm install underscore e npm install @types/underscore , logo depois de instalar ir no webpack.config.vendor.js
+ e add o   'underscore', e rodar o webpack --config webpack.config.vendor.js
 
 
 * Lembretes
