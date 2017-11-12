@@ -9,6 +9,7 @@ import { VehicleService } from './services/vehicle.service';
 
 
 
+
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
     declarations: sharedConfig.declarations,
