@@ -139,5 +139,38 @@ export class VehicleFormComponent implements OnInit {
         }
 
     }
+    delete()
+    {
+        if (this.vehicle.id)
+        {
+            if (confirm("Tem certeza?"))
+            {
+                this.vehicleService.delete(this.vehicle.id)
+                    .subscribe(x => this.toastyService.success({
+
+                        title: 'Sucesso',
+                        msg: 'Veículo deletado com sucesso!',
+                        theme: 'bootstrap',
+                        showClose: true,
+                        timeout: 5000
+                    }));
+
+                this.router.navigate(['/home']);
+            }
+       
+        }
+        else
+        {
+            this.toastyService.info({
+                title: 'Aviso',
+                msg: 'Busque um veículo para ser deletado!',
+                theme: 'bootstrap',
+                showClose: true,
+                timeout: 5000
+            });
+
+           
+        }
+    }
 
 }

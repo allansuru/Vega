@@ -8,5 +8,7 @@ namespace Vega.Core
         Task<Vehicle> GetVehicle(int id, bool includedRelated = true);
         void Add(Vehicle vehicle);
         void Remove(Vehicle vehicle);
+
+     
     }
 }

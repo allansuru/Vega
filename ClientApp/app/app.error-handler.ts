@@ -9,8 +9,8 @@ export class AppErrorHandler implements ErrorHandler {
 
     handleError(error: any): void {
 
-        if(!isDevMode)
-            Raven.captureException(error.originalError || error); //falta criar a conta no sentry.io, pra capturar os erros!!
+        //if(!isDevMode)
+          //  Raven.captureException(error.originalError || error); //falta criar a conta no sentry.io, pra capturar os erros!!
        
 
         this.ngZone.run(() => { //esse cara arruma o async

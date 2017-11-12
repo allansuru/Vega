@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 using Vega.Core.Models;
 
@@ -26,6 +27,8 @@ namespace Vega.Core
                  .SingleOrDefaultAsync(v => v.Id == id);
 
         }
+
+   
  
         public void Add(Vehicle vehicle)
         {
