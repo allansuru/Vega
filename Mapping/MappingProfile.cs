@@ -26,6 +26,7 @@ namespace Vega.Mapping
               .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => new KeyValuePairResource  { Id = vf.Feature.Id, Name = vf.Feature.Name })));
 
             // API Resource to Domain
+            CreateMap<FilterResource, Filter>();
             CreateMap<SaveVehicleResource, Vehicle>()
               .ForMember(v => v.Id, opt => opt.Ignore()) // Aqui eu corrijo essa excessao de id key:.InvalidOperationException: The property 'Id' on entity type 'Vehicle' is part of a key and so cannot be modified or marked as modified.
               .ForMember(v => v.ContactName, opt => opt.MapFrom(vr => vr.Contact.Name))

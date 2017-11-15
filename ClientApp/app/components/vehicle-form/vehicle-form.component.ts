@@ -80,6 +80,7 @@ export class VehicleFormComponent implements OnInit {
     private setVehicle(v: Vehicle)
     {
         this.vehicle.id = v.id;
+        this.vehicle.id = v.id;
         this.vehicle.makeId = v.make.id;
         this.vehicle.modelId = v.model.id;
         this.vehicle.isRegistered = v.isRegistered;
@@ -113,6 +114,7 @@ export class VehicleFormComponent implements OnInit {
     }
     submit()
     {
+     
         //update
         if (this.vehicle.id) {
             this.vehicleService.update(this.vehicle)
@@ -136,6 +138,7 @@ export class VehicleFormComponent implements OnInit {
                     showClose: true,
                     timeout: 5000
                 }));
+            //this.router.navigate(['/vehicles/', vehicle.id])
         }
 
     }

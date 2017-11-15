@@ -112,6 +112,9 @@ injetado Irepository, automapper e context(DB)
 depois da pra seraparar pra ficar mais bonito e criamos um metodo de setVehicle.
 - agora entra mais modulo pra ser instalado - npm install underscore e npm install @types/underscore , logo depois de instalar ir no webpack.config.vendor.js
  e add o   'underscore', e rodar o webpack --config webpack.config.vendor.js
+ - Criando filtros, no client é mt fácil, no objeto temos o filter(), agora no server, criamos o filterResource(api controller), o model Filter e add no mapping
+  Adicionamos o filtro no Repositorio de veiculos(Repository, IRepository) na function GetVehicles() ==> Isso foi o Domain Part.
+  - API part Filter, vamos para o API - VehicleController
 
 
 * Lembretes
