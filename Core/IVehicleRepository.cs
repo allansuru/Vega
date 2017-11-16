@@ -10,7 +10,7 @@ namespace Vega.Core
         void Add(Vehicle vehicle);
         void Remove(Vehicle vehicle);
 
-        Task<IEnumerable<Vehicle>> GetVehicles(Filter filter);
+        Task<IEnumerable<Vehicle>> GetVehicles(VehicleQuery filter);
 
     }
 }

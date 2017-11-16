@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using vega.Extensions;
 using Vega.Core.Models;
 
 namespace Vega.Core
@@ -29,7 +32,7 @@ namespace Vega.Core
 
         }
 
-        public async Task<IEnumerable<Vehicle>> GetVehicles(Filter filter)
+        public async Task<IEnumerable<Vehicle>> GetVehicles(VehicleQuery queryObj)
         {
             var query = context.Vehicles
             .Include(v => v.Model)
@@ -38,18 +41,35 @@ namespace Vega.Core
               .ThenInclude(vf => vf.Feature)
               .AsQueryable();
 
-            if (filter.MakeId.HasValue)
-                query = query.Where(v => v.Model.MakeId == filter.MakeId.Value);
+          
+           
 
-            if (filter.ModelId.HasValue)
-                query = query.Where(v => v.Model.MakeId == filter.ModelId.Value);
+            if (queryObj.MakeId.HasValue)
+                query = query.Where(v => v.Model.MakeId == queryObj.MakeId.Value);
 
+            if (queryObj.ModelId.HasValue)
+                query = query.Where(v => v.Model.MakeId == queryObj.ModelId.Value);
 
+       
+            var columnsMap = new Dictionary<string, Expression<Func<Vehicle, object>>>()
+            {
+
+                ["make"] = v => v.Model.Make.Name,
+                ["model"] = v => v.Model.Name,
+                ["contacName"] = v => v.ContactName
+             
+
+            };
+
+            //estudar esse cara
+            query = query.ApplyOrdering(queryObj, columnsMap);
+            
             return await query.ToListAsync();
         }
 
    
- 
+
+
         public void Add(Vehicle vehicle)
         {
             context.Vehicles.Add(vehicle);
